@@ -69,4 +69,4 @@ jobs:
 
             -   name: Print deploy
                 run: |
-                    tree deploy
+                    tree pi-gen/deploy
