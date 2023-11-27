@@ -45,3 +45,7 @@ jobs:
                     gpg \
                     pigz \
 
+            -   name: print
+                run: |
+                    ls
+
