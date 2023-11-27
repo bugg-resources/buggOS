@@ -49,3 +49,12 @@ jobs:
                 run: |
                     ls
 
+            -   name: Build Bugg OS
+                run: |
+                    touch pi-gen/stage3/SKIP
+                    touch pi-gen/stage4/SKIP
+                    touch pi-gen/stage5/SKIP
+                    touch pi-gen/stage4/SKIP_IMAGES
+                    touch pi-gen/stage5/SKIP_IMAGES
+                    cd pi-gen
+                    sudo ./build.sh
