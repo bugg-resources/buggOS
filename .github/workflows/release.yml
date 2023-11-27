@@ -12,9 +12,9 @@ jobs:
                 with:
                     detached: true
 
-            -   name: Install apt-cacher
-                run: |
-                    sudo apt-get install -y apt-cacher
+            #-   name: Install apt-cacher
+            #    run: |
+            #        sudo apt-get install -y apt-cacher
 
             -   name: Checkout Bugg OS 
                 uses: actions/checkout@v4
