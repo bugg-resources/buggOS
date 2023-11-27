@@ -41,6 +41,7 @@ jobs:
                     kpartx \
                     gpg \
                     pigz \
+                    apt-cacher-ng \
 
             -   name: print
                 run: |
@@ -55,4 +56,15 @@ jobs:
                     touch pi-gen/stage5/SKIP_IMAGES
                     cp config pi-gen/config
                     cd pi-gen
-                    sudo ./build.sh
+                    # sudo ./build.sh
+
+            -   name: Print deploy
+                run: |
+                    tree deploy
+
+    ssh-access :
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v3
+            -   name: Set up tmate session
+                uses: mxschmitt/action-tmate@v3
