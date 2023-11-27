@@ -6,6 +6,10 @@ jobs:
     image-builder:
         runs-on: ubuntu-latest
         steps:
+            -   name: Install apt-cacher
+                run: |
+                    sudo apt-get install -y apt-cacher
+
             -   uses: actions/checkout@v3
             -   name: Set up tmate session
                 uses: mxschmitt/action-tmate@v3
@@ -22,10 +26,6 @@ jobs:
                     ref: arm64
                     path: pi-gen
                     
-            -   name: Install apt-cacher
-                run: |
-                    sudo apt-get install -y apt-cacher
-
             -   name: Install Dependencies
                 run: |
                     sudo apt-get update
