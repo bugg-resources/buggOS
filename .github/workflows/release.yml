@@ -22,6 +22,10 @@ jobs:
                     ref: arm64
                     path: pi-gen
                     
+            -   name: Install apt-cacher
+                run: |
+                    sudo apt-get install -y apt-cacher
+
             -   name: Install Dependencies
                 run: |
                     sudo apt-get update
@@ -47,7 +51,6 @@ jobs:
                     kpartx \
                     gpg \
                     pigz \
-                    apt-cacher-ng \
 
             -   name: print
                 run: |
