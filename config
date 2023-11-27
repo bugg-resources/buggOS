@@ -1,6 +1,7 @@
 IMG_NAME="BuggOS"
 PI_GEN_RELEASE="BuggOS based on Raspberry Pi OS"
 RELEASE="bookworm"
+APT_PROXY="http://127.0.0.1:3142"
 # STAGE_LIST="stage0 stage1 stage2 stage-hyperbian"
 TARGET_HOSTNAME="bugg-v5"
 DISABLE_FIRST_BOOT_USER_RENAME=1
