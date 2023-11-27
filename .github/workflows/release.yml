@@ -1,0 +1,23 @@
+name: Bugg OS Release Build
+
+env:
+    PLATFORM: bookworm
+
+on: workflow_dispatch
+
+jobs:
+    image-builder:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout Bugg OS 
+                uses: actions/checkout@main
+
+            -   name: Checkout pi-gen
+                uses: actions/checkout@arm64
+                with:
+                    repository: RPi-Distro/pi-gen
+                    branch: arm64
+                    path: pi-gen
+                    
+
+
