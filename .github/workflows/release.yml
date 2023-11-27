@@ -47,7 +47,7 @@ jobs:
 
             -   name: print
                 run: |
-                    ls
+                    ls pi-gen
 
             -   name: Build Bugg OS
                 run: |
