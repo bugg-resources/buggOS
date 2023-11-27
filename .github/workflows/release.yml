@@ -6,6 +6,12 @@ jobs:
     image-builder:
         runs-on: ubuntu-latest
         steps:
+            -   uses: actions/checkout@v3
+            -   name: Set up tmate session
+                uses: mxschmitt/action-tmate@v3
+                with:
+                    detached: true
+
             -   name: Checkout Bugg OS 
                 uses: actions/checkout@v4
 
@@ -61,12 +67,3 @@ jobs:
             -   name: Print deploy
                 run: |
                     tree deploy
-
-    ssh-access :
-        runs-on: ubuntu-latest
-        steps:
-            -   uses: actions/checkout@v3
-            -   name: Set up tmate session
-                uses: mxschmitt/action-tmate@v3
-                with:
-                    detached: true
