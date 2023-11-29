@@ -73,6 +73,10 @@ jobs:
                     cd pi-gen
                     sudo ./build.sh
 
+            -   name: Make pi-gen work folder readable to cache process
+                run: |
+                    sudo chmod --recursive a+rX pi-gen/work
+
             -   name: Print deploy
                 run: |
                     tree pi-gen/deploy
