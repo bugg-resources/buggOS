@@ -6,6 +6,14 @@ jobs:
     image-builder:
         runs-on: ubuntu-latest
         steps:
+            -   name: Cache pi-gen work directory
+                uses: actions/cache@v3
+                with:
+                    path: pi-gen/work
+                    key: ${{ runner.os }}-pi-gen-${{ hashFiles('pi-gen/work') }}
+                    restore-keys: |
+                        ${{ runner.os }}-pi-gen-
+
             -   uses: actions/checkout@v3
             -   name: Set up tmate session
                 uses: mxschmitt/action-tmate@v3
