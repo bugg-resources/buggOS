@@ -12,4 +12,4 @@ touch pi-gen/stage4/SKIP_IMAGES
 touch pi-gen/stage5/SKIP_IMAGES
 cp config pi-gen/config
 cd pi-gen
-sudo ./build.sh
+#sudo ./build.sh
