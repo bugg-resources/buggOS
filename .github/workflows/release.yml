@@ -75,6 +75,12 @@ jobs:
 
             -   name: Make pi-gen work folder readable to cache process
                 run: |
+                    sudo rm -rf pi-gen/work/BuggOS/stage0/rootfs/dev
+                    sudo rm -rf pi-gen/work/BuggOS/stage1/rootfs/dev
+                    sudo rm -rf pi-gen/work/BuggOS/stage2/rootfs/dev
+                    sudo rm -rf pi-gen/work/BuggOS/stage3/rootfs/dev
+                    sudo rm -rf pi-gen/work/BuggOS/stage4/rootfs/dev
+                    sudo rm -rf pi-gen/work/BuggOS/stage5/rootfs/dev
                     sudo chmod --recursive a+rX pi-gen/work
 
             -   name: Print deploy
