@@ -14,7 +14,7 @@ jobs:
 
             -   uses: actions/checkout@v3
             -   name: Set up SSH debug console
-                if: false   # set to true to enable debugging over SSH
+                if: true   # set to true to enable debugging over SSH
                 uses: mxschmitt/action-tmate@v3
                 with:
                     detached: true
