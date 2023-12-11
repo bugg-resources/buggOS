@@ -17,7 +17,7 @@ echo "dtparam=watchdog=on" >> ${ROOTFS_DIR}/boot/config.txt
 
 echo "---> Install Bugg Recording Userspace"
 # bugg-cm4-firmware has already been cloned by the workflow script
-echo -r ${GITHUB_WORKSPACE}/bugg-cm4-firmware ${ROOTFS_DIR}/home/${FIRST_USER_NAME}
+echo cp -r ${GITHUB_WORKSPACE}/bugg-cm4-firmware ${ROOTFS_DIR}/home/${FIRST_USER_NAME}
 cp -r ${GITHUB_WORKSPACE}/bugg-cm4-firmware ${ROOTFS_DIR}/home/${FIRST_USER_NAME}
 
 echo "---> Enable DS2331 RTC"
