@@ -36,9 +36,10 @@ jobs:
                     repository: jeffmakes/bugg-cm4-firmware
                     path: bugg-cm4-firmware
                 
-            -   name: Copy Bugg Userspace Recording Firmware into pi-gen
+            -   name: Copy Bugg Userspace Recording Firmware into staging folder
                 run: |
-                    cp -R bugg-cm4-firmware pi-gen/stage-bugg-os/00-configure-bugg-os/files
+                    mkdir stage-bugg-os/00-configure-bugg-os/files
+                    cp -R bugg-cm4-firmware stage-bugg-os/00-configure-bugg-os/files
                     
             -   name: Install Dependencies
                 run: |
