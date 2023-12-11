@@ -23,6 +23,11 @@ jobs:
             -   name: Checkout Bugg OS 
                 uses: actions/checkout@v4
 
+            -   name: Checkout Bugg Userspace Recording Firmware
+                uses: actions/checkout@v3
+                with:
+                    repository: jeffmakes/bugg-cm4-firmware
+                    
             -   name: Checkout pi-gen
                 uses: actions/checkout@v4
                 with:
@@ -30,11 +35,6 @@ jobs:
                     ref: arm64
                     path: pi-gen
 
-            -   name: Checkout Bugg Userspace Recording Firmware
-                uses: actions/checkout@v3
-                with:
-                    repository: jeffmakes/bugg-cm4-firmware
-                    
             -   name: Install Dependencies
                 run: |
                     sudo apt-get update
