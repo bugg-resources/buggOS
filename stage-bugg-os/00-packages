@@ -1,0 +1,7 @@
+watchdog
+modemmanager 
+network-manager
+python3-pip
+ffmpeg
+ntpdate
+libffi-dev
