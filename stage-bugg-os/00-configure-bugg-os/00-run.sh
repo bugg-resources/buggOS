@@ -19,5 +19,8 @@ echo "---> Install Bugg Recording Userspace"
 # bugg-cm4-firmware has already been cloned by the workflow script
 cp -r bugg-cm4-firmware ${ROOTFS_DIR}/home/${FIRST_USER_NAME}
 
+echo "---> Enable DS2331 RTC"
+echo "dtoverlay=i2c-rtc,ds3231,wakeup-source" >> ${ROOTFS_DIR}/boot/config.txt
+
 echo ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/bees.txt
 echo "hello" > ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/bees.txt
