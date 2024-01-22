@@ -2,7 +2,6 @@
 # -e flag causes the script to exit if any command returns a non-zero exit code
 
 echo "Running stage-bugg-os/00-configure-bugg-os/00-run.sh"
-echo "🪲 Bugg-OS Configuration Begins!"
 echo "  🔧 Configuring the Raspberry Pi"
 
 echo "    ⚙️ Enable UART console"
@@ -31,6 +30,8 @@ echo "dtparam=watchdog=on" >> ${ROOTFS_DIR}/boot/firmware/config.txt
 echo "watchdog-device=/dev/watchdog" >> ${ROOTFS_DIR}/etc/watchdog.conf
 echo "watchdog-timeout=15" >> ${ROOTFS_DIR}/etc/watchdog.conf
 echo "max-load-1 = 24" >> ${ROOTFS_DIR}/etc/watchdog.conf
+
+
 
 #echo ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/bees.txt
 # echo "hello" > ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/bees.txt

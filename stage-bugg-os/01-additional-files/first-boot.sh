@@ -28,4 +28,4 @@ echo "    ⚙️ Disabling first-boot.service"
 systemctl stop first-boot.service
 systemctl disable first-boot.service
 
-echo "  🍻 Success!"
+echo "  🍻 Success running first boot script!"

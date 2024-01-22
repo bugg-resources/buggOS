@@ -10,3 +10,5 @@ apt install -y python3-pip
 
 echo "    ⚙️ Install Python dependencies"
 pip3 install -r requirements.txt
+
+echo "  🍻 Success installing Python dependencies!"
