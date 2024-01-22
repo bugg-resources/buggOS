@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # This script is used to install additional files into the rootfs.
 

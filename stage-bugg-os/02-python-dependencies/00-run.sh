@@ -1,3 +1,4 @@
+#!/bin/bash -e
 #!/bin/bash
 
 # This script installs PIP and the Python dependencies for Bugg-OS.

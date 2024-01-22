@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # This script runs once, on first boot.
 # It is run by the first-boot.service systemd service.
