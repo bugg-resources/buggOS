@@ -49,7 +49,10 @@ echo "max-load-1 = 24" >> ${ROOTFS_DIR}/etc/watchdog.conf
 systemctl enable watchdog
 systemctl start watchdog
 systemctl status watchdog
+ 
 
+echo "    ⚙️ Install Python PIP"
+apt in -y python3-pip
 
 #echo ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/bees.txt
 # echo "hello" > ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/bees.txt
