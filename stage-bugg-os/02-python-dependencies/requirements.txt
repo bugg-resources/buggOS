@@ -1,7 +1,5 @@
 six
 google-cloud-storage
-ffmpeg
-ntpdate
 RPi.GPIO
 adafruit-python-shell
 pcf8574

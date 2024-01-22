@@ -2,6 +2,7 @@ watchdog
 modemmanager 
 network-manager
 python3-pip
+git
 ffmpeg
 ntpdate
 libffi-dev
