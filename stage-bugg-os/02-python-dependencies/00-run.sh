@@ -1,5 +1,5 @@
 #!/bin/bash -e
-#!/bin/bash
+# -e flag causes the script to exit if any command returns a non-zero exit code
 
 # This script installs PIP and the Python dependencies for Bugg-OS.
 

@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# -e flag causes the script to exit if any command returns a non-zero exit code
 
 # This script is used to install additional files into the rootfs.
 
