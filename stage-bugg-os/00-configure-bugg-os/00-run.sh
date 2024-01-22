@@ -33,7 +33,7 @@ echo "watchdog-timeout=15" >> ${ROOTFS_DIR}/etc/watchdog.conf
 echo "max-load-1 = 24" >> ${ROOTFS_DIR}/etc/watchdog.conf
 
 echo "    ⚙️ Install Python PIP"
-apt in -y python3-pip
+apt install -y python3-pip
 
 #echo ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/bees.txt
 # echo "hello" > ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/bees.txt
