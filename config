@@ -10,4 +10,5 @@ FIRST_USER_NAME="bugg"
 FIRST_USER_PASS="listenclosely"
 WPA_COUNTRY="GB"
 ENABLE_SSH=1
-DEPLOY_COMPRESSION=none
+DEPLOY_COMPRESSION=gz # In this case, 05-finalise/01-run.sh uses pigz
+COMPRESSION_LEVEL=3
