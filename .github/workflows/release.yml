@@ -38,7 +38,7 @@ jobs:
                 
             -   name: Copy Bugg Userspace Recording Firmware into staging folder
                 run: |
-                    mkdir stage-bugg-os/00-configure-bugg-os/files
+                    mkdir -p stage-bugg-os/00-configure-bugg-os/files
                     cp -R bugg-cm4-firmware stage-bugg-os/00-configure-bugg-os/files
                     
             -   name: Install Dependencies
