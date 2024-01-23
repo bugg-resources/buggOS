@@ -1,2 +1,3 @@
 --container-options --privileged
-
+--container-cap-add CAP_MKNOD 
+ 
