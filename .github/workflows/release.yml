@@ -6,13 +6,6 @@ jobs:
     image-builder:
         runs-on: ubuntu-latest
         steps:
-            -   name: Cache pi-gen work directory
-                if: false
-                uses: actions/cache@v3
-                with:
-                    path: pi-gen/work
-                    key: ${{ runner.os }}-pi-gen
-
             -   uses: actions/checkout@v4
             -   name: Set up SSH debug console
                 if: false   # set to true to enable debugging over SSH
@@ -26,7 +19,8 @@ jobs:
             -   name: Checkout pi-gen
                 uses: actions/checkout@v4
                 with:
-                    repository: RPi-Distro/pi-gen
+                    # repository: RPi-Distro/pi-gen
+                    repository: jeffmakes/pi-gen
                     ref: arm64
                     path: pi-gen
 
@@ -85,16 +79,6 @@ jobs:
                     cp -R stage-bugg-os pi-gen
                     cd pi-gen
                     sudo ./build.sh
-
-            -   name: Make pi-gen work folder readable to cache process
-                run: |
-                    sudo rm -rf pi-gen/work/BuggOS/stage0/rootfs/dev
-                    sudo rm -rf pi-gen/work/BuggOS/stage1/rootfs/dev
-                    sudo rm -rf pi-gen/work/BuggOS/stage2/rootfs/dev
-                    sudo rm -rf pi-gen/work/BuggOS/stage3/rootfs/dev
-                    sudo rm -rf pi-gen/work/BuggOS/stage4/rootfs/dev
-                    sudo rm -rf pi-gen/work/BuggOS/stage5/rootfs/dev
-                    sudo chmod --recursive a+rX pi-gen/work
 
             -   name: Print deploy
                 run: |
