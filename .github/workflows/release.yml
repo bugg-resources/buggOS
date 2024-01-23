@@ -64,10 +64,6 @@ jobs:
                     kmod \
                     python3-dev \
 
-            -   name: print
-                run: |
-                    ls pi-gen
-
             -   name: Build Bugg OS
                 run: |
                     touch pi-gen/stage3/SKIP
@@ -80,11 +76,8 @@ jobs:
                     cd pi-gen
                     sudo ./build.sh
 
-            -   name: Print deploy
-                run: |
-                    tree pi-gen/deploy
-
             -   name: Upload Bugg OS image
+                if: false
                 uses: actions/upload-artifact@v3
                 with:
                     name: BuggOS
