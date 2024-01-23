@@ -66,6 +66,8 @@ jobs:
                     kpartx \
                     gpg \
                     pigz \
+                    xxd \
+                    kmod \
 
             -   name: print
                 run: |
