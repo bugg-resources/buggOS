@@ -27,15 +27,15 @@ jobs:
             -   name: Checkout Bugg Userspace Recording Firmware
                 uses: actions/checkout@v4
                 with:
-                    repository: jeffmakes/bugg-cm4-firmware
-                    path: bugg-cm4-firmware
+                    repository: jeffmakes/bugg-recording
+                    path: bugg-recording
                 
             -   name: Copy Bugg Userspace Recording Firmware into staging folder
                 run: |
-                    mkdir -p stage-bugg-os/00-configure-bugg-os/files
-                    cp -R bugg-cm4-firmware stage-bugg-os/00-configure-bugg-os/files
+                    mkdir -p stage-bugg-os/files
+                    cp -R bugg-recording stage-bugg-os/files
                     
-            -   name: Install Dependencies
+            -   name: Install Dependencies for the pi-gen build
                 run: |
                     sudo apt-get update
                     sudo apt-get install -y \
