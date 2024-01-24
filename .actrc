@@ -1,1 +1,1 @@
---container-options --privileged --cap-add=CAP_MKNOD --artifact-server-path /tmp/artifacts
+--container-options --privileged --cap-add=CAP_MKNOD --artifact-server-path=/tmp/artifacts
