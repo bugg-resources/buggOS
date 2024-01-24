@@ -76,9 +76,9 @@ jobs:
                     cd pi-gen
                     sudo ./build.sh
 
-            -   name: Copy Bugg OS image out of container to host
-                run: |
-                    ./copy_img_to_host.sh
+            # -   name: Copy Bugg OS image out of container to host
+            #     run: |
+            #         ./copy_img_to_host.sh
 
             -   name: Upload Bugg OS image
                 # if: false
