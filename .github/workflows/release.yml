@@ -28,7 +28,7 @@ jobs:
                 uses: actions/checkout@v4
                 with:
                     repository: jeffmakes/bugg-recording
-                    path: stage-bugg-os/files
+                    path: stage-bugg-os/files/bugg-recording
                 
             # -   name: Copy Bugg Userspace Recording Firmware into staging folder
             #     run: |
