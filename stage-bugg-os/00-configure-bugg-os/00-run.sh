@@ -20,7 +20,7 @@ echo "dtparam=watchdog=on" >> ${ROOTFS_DIR}/boot/firmware/config.txt
 
 echo "    ⚙️ Install Bugg Recording Userspace"
 # bugg-recording has already been cloned by the workflow script
-cp -r files/bugg-recording ${ROOTFS_DIR}/home/${FIRST_USER_NAME}
+cp -r files/bugg-recording ${ROOTFS_DIR}/opt
 
 echo "    ⚙️ Enable DS2331 RTC"
 echo "dtoverlay=i2c-rtc,ds3231,wakeup-source" >> ${ROOTFS_DIR}/boot/firmware/config.txt
