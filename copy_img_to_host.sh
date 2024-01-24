@@ -15,7 +15,8 @@ matching_file=$(docker exec "$container_id" sh -c "ls $file_pattern")
 source_path=$matching_file
 
 # Destination path on the host
-destination_path="/home/ubuntu/deploy"
+destination_path="/home/ubuntu/bugg-os/deploy"
+mkdir -p "$destination_path"
 
 # Copy the file from the container to the host
 docker cp "$container_id:$source_path" "$destination_path"
