@@ -81,7 +81,7 @@ jobs:
                     ./copy_img_to_host.sh
 
             -   name: Upload Bugg OS image
-                if: false
+                # if: false
                 uses: actions/upload-artifact@v3
                 with:
                     name: BuggOS
