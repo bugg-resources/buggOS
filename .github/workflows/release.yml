@@ -63,6 +63,7 @@ jobs:
                     xxd \
                     kmod \
                     python3-dev \
+                    magic-wormhole \    # TODO: remove this 
 
             -   name: Build Bugg OS
                 run: |
@@ -75,6 +76,11 @@ jobs:
                     cp -R stage-bugg-os pi-gen
                     cd pi-gen
                     sudo ./build.sh
+                
+            -   name: Wormhole Send Bugg OS image
+                run: |
+                    wormhole send pi-gen/deploy/*BuggOS* 
+
 
             -   name: Upload Bugg OS image
                 if: false
