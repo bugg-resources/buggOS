@@ -6,3 +6,4 @@ git
 ffmpeg
 ntpdate
 libffi-dev
+xterm   # provides 'resize' command, for resizing the serial console for easier debugging
