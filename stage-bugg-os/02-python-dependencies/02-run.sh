@@ -5,9 +5,10 @@
 
 # Currently this takes a list of dependencies from the local requirements.txt file.
 # In the future, we should pull in the dependencies from the application firmware repo.
-on_chroot << EOF
-echo "  🔧 Installing Python dependencies"
 
-echo "    ⚙️ Install Python dependencies"
-pip3 install -r requirements.txt
-EOF
+# on_chroot << EOF
+# echo "  🔧 Installing Python dependencies"
+
+# echo "    ⚙️ Install Python dependencies"
+# pip3 install -r requirements.txt
+# EOF
