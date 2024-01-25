@@ -6,12 +6,13 @@
 # To view the journal, run `journalctl -u first-boot.service -f`
 
 logger -t first-boot.sh "🔧 Bugg-OS First Boot Script"
+touch /opt/first-boot.sh-ran
 
 logger "⚙️ Enable I2C"
 raspi-config nonint do_i2c 0
 
-logger "⚙️ Enable Auto Login"
-raspi-config nonint do_boot_behaviour B2
+# logger "⚙️ Enable Auto Login"
+# raspi-config nonint do_boot_behaviour B2
 
 logger "⚙️ Enable the serial port"
 raspi-config nonint do_serial_hw 0

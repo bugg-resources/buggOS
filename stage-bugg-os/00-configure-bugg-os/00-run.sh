@@ -31,6 +31,11 @@ echo "watchdog-device=/dev/watchdog" >> ${ROOTFS_DIR}/etc/watchdog.conf
 echo "watchdog-timeout=15" >> ${ROOTFS_DIR}/etc/watchdog.conf
 echo "max-load-1 = 24" >> ${ROOTFS_DIR}/etc/watchdog.conf
 
+on_chroot << EOF
+echo "    ⚙️ Enable Auto Login"
+raspi-config nonint do_boot_behaviour B2
+EOF
+
 echo "  🍻 Success configuring hardware!"
 
 
