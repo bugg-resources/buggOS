@@ -28,7 +28,7 @@ systemctl start watchdog
 systemctl status watchdog
 
 logger "⚙️ Disabling first-boot.service"
-systemctl stop first-boot.service
+#systemctl stop first-boot.service
 systemctl disable first-boot.service
 
 logger -t first-boot.sh "🍻 First boot script complete."
