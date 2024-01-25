@@ -4,4 +4,4 @@
 # This script installs the Python dependencies for the application software.
 
 mkdir -p "${ROOTFS_DIR}/opt"
-cp  "${STAGE_DIR}/files/bugg-recording" "${ROOTFS_DIR}/opt/"
+cp -r "${STAGE_DIR}/files/bugg-recording" "${ROOTFS_DIR}/opt/"
