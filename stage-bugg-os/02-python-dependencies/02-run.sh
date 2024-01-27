@@ -12,9 +12,8 @@
 
 echo "  🔧 Installing Python dependencies"
 on_chroot << EOF
-VENV="/home/${FIRST_USER_NAME}/.env"
-python3 -m venv --system-site-packages "$VENV"
-source "$VENV/bin/activate"
+python3 -m venv --system-site-packages /home/${FIRST_USER_NAME}/.env
+source /home/${FIRST_USER_NAME}/.env/bin/activate
 
 pip3 install -r requirements.txt
 EOF
