@@ -24,20 +24,6 @@ fi
 
 logger -t first-boot.sh "🔧 Bugg-OS First Boot Script"
 
-logger "⚙️ Enable I2C"
-raspi-config nonint do_i2c 0
-
-# logger "⚙️ Enable Auto Login"
-# raspi-config nonint do_boot_behaviour B2
-
-logger "⚙️ Enable the serial port"
-raspi-config nonint do_serial_hw 0
-
-logger "⚙️ Enable remote GPIO access"
-raspi-config nonint do_rgpio 0
-
-logger "⚙️ Set Timezone to UTC"
-raspi-config nonint do_change_timezone UTC
 
 logger "⚙️ Start the watchdog service"
 systemctl enable watchdog

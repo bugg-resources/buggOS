@@ -31,14 +31,26 @@ echo "watchdog-device=/dev/watchdog" >> ${ROOTFS_DIR}/etc/watchdog.conf
 echo "watchdog-timeout=15" >> ${ROOTFS_DIR}/etc/watchdog.conf
 echo "max-load-1 = 24" >> ${ROOTFS_DIR}/etc/watchdog.conf
 
-echo "    ⚙️ Enable Auto Login"
-echo "SUDO_USER=\"${FIRST_USER_NAME}\" raspi-config nonint do_net_names 1"
+#echo "    ⚙️ Enable Auto Login"
+
 on_chroot << EOF
-	SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_net_names 1
+logger "⚙️ Enable I2C"
+"SUDO_USER=\"${FIRST_USER_NAME}\" raspi-config nonint do_i2c 0
+
+# logger "⚙️ Enable Auto Login"
+# raspi-config nonint do_boot_behaviour B2
+
+logger "⚙️ Enable the serial port"
+"SUDO_USER=\"${FIRST_USER_NAME}\" raspi-config nonint do_serial_hw 0
+
+logger "⚙️ Enable remote GPIO access"
+"SUDO_USER=\"${FIRST_USER_NAME}\" raspi-config nonint do_rgpio 0
+
+logger "⚙️ Set Timezone to UTC"
+"SUDO_USER=\"${FIRST_USER_NAME}\" raspi-config nonint do_change_timezone UTC
 EOF
 
-
-echo "  🍻 Success configuring hardware!"
+echo "  🍻 Finished configuring hardware!"
 
 
 #echo ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/bees.txt
