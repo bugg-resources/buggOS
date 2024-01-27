@@ -12,7 +12,7 @@
 
 echo "  🔧 Installing Python dependencies"
 on_chroot << EOF
-VENV="$/home/${FIRST_USER_NAME}/.env"
+VENV="/home/${FIRST_USER_NAME}/.env"
 python3 -m venv --system-site-packages "$VENV"
 source "$VENV/bin/activate"
 
