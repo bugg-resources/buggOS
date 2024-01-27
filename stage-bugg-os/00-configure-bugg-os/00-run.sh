@@ -17,10 +17,6 @@ echo "dtoverlay=disable-bt" >> ${ROOTFS_DIR}/boot/firmware/config.txt
 echo "    ⚙️ Enable Hardware Watchdog"
 echo "dtparam=watchdog=on" >> ${ROOTFS_DIR}/boot/firmware/config.txt
 
-echo "    ⚙️ Install Bugg Recording Userspace"
-# bugg-recording has already been cloned by the workflow script
-cp -r "${STAGE_DIR}/files/bugg-recording" ${ROOTFS_DIR}/opt
-
 echo "    ⚙️ Enable DS2331 RTC"
 echo "dtoverlay=i2c-rtc,ds3231,wakeup-source" >> ${ROOTFS_DIR}/boot/firmware/config.txt
 
@@ -36,7 +32,7 @@ on_chroot << EOF
 SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_i2c 0
 EOF
 
-echo "    ⚙️ Enable Auto Login"
+echo "    ⚙️ Enable Auto Login"     # TODO: This doesn't work
 on_chroot << EOF
 SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_boot_behaviour B2
 EOF
@@ -53,7 +49,7 @@ EOF
 
 echo "    ⚙️ Set Timezone to UTC"
 on_chroot << EOF
-SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_change_timezone Iceland
+SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_change_timezone UTC
 EOF
 
 echo "  🍻 Finished configuring hardware!"
