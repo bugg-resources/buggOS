@@ -34,19 +34,19 @@ echo "max-load-1 = 24" >> ${ROOTFS_DIR}/etc/watchdog.conf
 #echo "    ⚙️ Enable Auto Login"
 
 on_chroot << EOF
-logger "⚙️ Enable I2C"
+echo "⚙️ Enable I2C"
 SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_i2c 0
 
-logger "⚙️ Enable Auto Login"
+echo "⚙️ Enable Auto Login"
 SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_boot_behaviour B2
 
-logger "⚙️ Enable the serial port"
+echo "⚙️ Enable the serial port"
 SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_serial_hw 0
 
-logger "⚙️ Enable remote GPIO access"
+echo "⚙️ Enable remote GPIO access"
 SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_rgpio 0
 
-logger "⚙️ Set Timezone to UTC"
+echo "⚙️ Set Timezone to UTC"
 SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_change_timezone UTC
 EOF
 
