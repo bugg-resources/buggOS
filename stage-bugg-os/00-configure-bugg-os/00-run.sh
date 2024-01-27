@@ -4,8 +4,7 @@
 echo "Running stage-bugg-os/00-configure-bugg-os/00-run.sh"
 echo "  🔧 Configuring the Raspberry Pi Hardware"
 
-echo "    ⚙️ Enable UART console"
-echo "enable_uart=1" >> ${ROOTFS_DIR}/boot/firmware/config.txt
+echo "    ⚙️ Enable Verbose Boot Messages"
 sed -i "s/ quiet//g" ${ROOTFS_DIR}/boot/firmware/cmdline.txt
 
 echo "    ⚙️ Enable USB OTG"
