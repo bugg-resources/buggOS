@@ -9,11 +9,12 @@
 # RPi OS prevents installation of system-wide Python packages with PIP.
 # The recommended workflow is to create a virtual environment for the user, or use a venv for the project.
 
+cp requirements.txt "${ROOTFS_DIR}/tmp/requirements.txt"
 
 echo "  🔧 Installing Python dependencies"
 on_chroot << EOF
 python3 -m venv --system-site-packages /home/${FIRST_USER_NAME}/.env
 source /home/${FIRST_USER_NAME}/.env/bin/activate
 
-pip3 install -r requirements.txt
+pip3 install -r /tmp/requirements.txt
 EOF
