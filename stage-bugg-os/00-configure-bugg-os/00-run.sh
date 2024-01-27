@@ -31,22 +31,29 @@ echo "watchdog-device=/dev/watchdog" >> ${ROOTFS_DIR}/etc/watchdog.conf
 echo "watchdog-timeout=15" >> ${ROOTFS_DIR}/etc/watchdog.conf
 echo "max-load-1 = 24" >> ${ROOTFS_DIR}/etc/watchdog.conf
 
-#echo "    ⚙️ Enable Auto Login"
 
+echo "    ⚙️ Enable I2C"
 on_chroot << EOF
-echo "⚙️ Enable I2C"
 SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_i2c 0
+EOF
 
-echo "⚙️ Enable Auto Login"
+echo "    ⚙️ Enable Auto Login"
+on_chroot << EOF
 SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_boot_behaviour B2
+EOF
 
-echo "⚙️ Enable the serial port"
+echo "    ⚙️ Enable the serial port"
+on_chroot << EOF
 SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_serial_hw 0
+EOF
 
-echo "⚙️ Enable remote GPIO access"
+echo "    ⚙️ Enable remote GPIO access"
+on_chroot << EOF
 SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_rgpio 0
+EOF
 
-echo "⚙️ Set Timezone to UTC"
+echo "    ⚙️ Set Timezone to UTC"
+on_chroot << EOF
 SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_change_timezone UTC
 EOF
 
