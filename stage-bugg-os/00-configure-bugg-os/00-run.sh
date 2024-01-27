@@ -31,8 +31,8 @@ echo "watchdog-device=/dev/watchdog" >> ${ROOTFS_DIR}/etc/watchdog.conf
 echo "watchdog-timeout=15" >> ${ROOTFS_DIR}/etc/watchdog.conf
 echo "max-load-1 = 24" >> ${ROOTFS_DIR}/etc/watchdog.conf
 
-on_chroot << EOF
 echo "    ⚙️ Enable Auto Login"
+on_chroot << EOF
 SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_boot_behaviour B4
 EOF
 
