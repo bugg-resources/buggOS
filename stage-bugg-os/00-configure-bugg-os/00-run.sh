@@ -54,7 +54,7 @@ EOF
 
 echo "    ⚙️ Set Timezone to UTC"
 on_chroot << EOF
-SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_change_timezone UTC
+SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_change_timezone Iceland
 EOF
 
 echo "  🍻 Finished configuring hardware!"
