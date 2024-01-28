@@ -7,8 +7,11 @@ TARGET_HOSTNAME="bugg-v5"
 DISABLE_FIRST_BOOT_USER_RENAME=1
 SUDO_USER="bugg"
 FIRST_USER_NAME="bugg"
-FIRST_USER_PASS="listenclosely"
+FIRST_USER_PASS="bugg"
 WPA_COUNTRY="GB"
 ENABLE_SSH=1
 DEPLOY_COMPRESSION=gz # In this case, 05-finalise/01-run.sh uses pigz
 COMPRESSION_LEVEL=3
+
+WPA_ESSID="The Church Workshop 2.4 GHz"
+WPA_PASSWORD="fromaltartoworkbench"
