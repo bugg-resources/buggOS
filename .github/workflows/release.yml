@@ -19,8 +19,8 @@ jobs:
             -   name: Checkout pi-gen
                 uses: actions/checkout@v4
                 with:
-                    # repository: RPi-Distro/pi-gen
-                    repository: jeffmakes/pi-gen
+                    repository: RPi-Distro/pi-gen
+                    # repository: jeffmakes/pi-gen
                     ref: arm64
                     path: pi-gen
 
