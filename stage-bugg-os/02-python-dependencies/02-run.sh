@@ -11,7 +11,7 @@
 
 cp requirements.txt "${ROOTFS_DIR}/tmp/requirements.txt"
 
-echo "  🔧 Installing Python dependencies and venv"
+echo "🔧 Installing Python dependencies and venv"
 on_chroot << EOF
 python3 -m venv --system-site-packages /opt/venv
 source /opt/venv/bin/activate
