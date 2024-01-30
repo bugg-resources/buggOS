@@ -3,3 +3,4 @@ google-cloud-storage
 RPi.GPIO
 adafruit-python-shell
 pcf8574
+spidev
