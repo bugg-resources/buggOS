@@ -27,14 +27,19 @@ echo "watchdog-timeout=15" >> ${ROOTFS_DIR}/etc/watchdog.conf
 echo "max-load-1 = 24" >> ${ROOTFS_DIR}/etc/watchdog.conf
 
 
+echo "    ⚙️ Enable Auto Login"     # TODO: This doesn't work
+on_chroot << EOF
+SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_boot_behaviour B2
+EOF
+
 echo "    ⚙️ Enable I2C"
 on_chroot << EOF
 SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_i2c 0
 EOF
 
-echo "    ⚙️ Enable Auto Login"     # TODO: This doesn't work
+echo "    ⚙️ Enable SPI"
 on_chroot << EOF
-SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_boot_behaviour B2
+SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_spi 0
 EOF
 
 echo "    ⚙️ Enable the serial port"
