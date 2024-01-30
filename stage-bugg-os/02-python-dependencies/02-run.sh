@@ -11,10 +11,10 @@
 
 cp requirements.txt "${ROOTFS_DIR}/tmp/requirements.txt"
 
-echo "  🔧 Installing Python dependencies"
+echo "  🔧 Installing Python dependencies and venv"
 on_chroot << EOF
-python3 -m venv --system-site-packages /home/${FIRST_USER_NAME}/.env
-source /home/${FIRST_USER_NAME}/.env/bin/activate
+python3 -m venv --system-site-packages /opt/venv
+source /opt/venv/bin/activate
 
 pip3 install -r /tmp/requirements.txt
 EOF
