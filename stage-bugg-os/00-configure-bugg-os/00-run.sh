@@ -7,10 +7,6 @@ echo "  🔧 Configuring the Raspberry Pi Hardware"
 echo "    ⚙️ Enable Verbose Boot Messages"
 sed -i "s/ quiet//g" ${ROOTFS_DIR}/boot/firmware/cmdline.txt
 
-echo "    ⚙️ Enable USB OTG"
-echo "dtoverlay=dwc2,dr_mode=host" >> ${ROOTFS_DIR}/boot/firmware/config.txt
-echo "otg_mode=1" >> ${ROOTFS_DIR}/boot/firmware/config.txt
-
 echo "    ⚙️ Disable Bluetooth"
 echo "dtoverlay=disable-bt" >> ${ROOTFS_DIR}/boot/firmware/config.txt
 
