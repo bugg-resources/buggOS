@@ -30,6 +30,12 @@ jobs:
                     repository: jeffmakes/bugg-recording
                     path: stage-bugg-os/files/bugg-recording
                 
+            -   name: Checkout Bugg Soundcard Driver
+                uses: actions/checkout@v4
+                with:
+                    repository: jeffmakes/bugg-soundcard-driver
+                    path: stage-bugg-os/files/bugg-soundcard-driver
+
             # -   name: Copy Bugg Userspace Recording Firmware into staging folder
             #     run: |
             #         mkdir -p stage-bugg-os/files
