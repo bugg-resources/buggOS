@@ -36,11 +36,6 @@ jobs:
                     repository: jeffmakes/bugg-soundcard-driver
                     path: stage-bugg-os/files/bugg-soundcard-driver
 
-            # -   name: Copy Bugg Userspace Recording Firmware into staging folder
-            #     run: |
-            #         mkdir -p stage-bugg-os/files
-            #         cp -R bugg-recording stage-bugg-os/files
-                    
             -   name: Install Dependencies for the pi-gen build
                 run: |
                     sudo apt-get update
