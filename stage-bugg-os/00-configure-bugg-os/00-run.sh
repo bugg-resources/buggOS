@@ -22,6 +22,9 @@ echo "watchdog-device=/dev/watchdog" >> ${ROOTFS_DIR}/etc/watchdog.conf
 echo "watchdog-timeout=15" >> ${ROOTFS_DIR}/etc/watchdog.conf
 echo "max-load-1 = 24" >> ${ROOTFS_DIR}/etc/watchdog.conf
 
+echo "⚙️ Disable I2C on ID_SC and ID_SD pins"
+echo "force_eeprom_read=0" >> ${ROOTFS_DIR}/boot/firmware/config.txt
+
 
 echo "⚙️ Enable Auto Login" # TODO: This doesn't work
 on_chroot << EOF
