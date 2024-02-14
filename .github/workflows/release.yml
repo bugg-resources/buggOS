@@ -63,6 +63,7 @@ jobs:
                     xxd \
                     kmod \
                     python3-dev \
+                    device-tree-compiler \
 
             -   name: Build Bugg OS
                 run: |
