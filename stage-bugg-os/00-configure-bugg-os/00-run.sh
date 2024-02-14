@@ -25,6 +25,9 @@ echo "max-load-1 = 24" >> ${ROOTFS_DIR}/etc/watchdog.conf
 echo "⚙️ Disable I2C on ID_SC and ID_SD pins"
 echo "force_eeprom_read=0" >> ${ROOTFS_DIR}/boot/firmware/config.txt
 
+echo "⚙️ Enable the SD card bus via the SDHOST interface"
+dtc -@ -I dts -O dtb -o ${ROOTFS_DIR}/boot/overlays/sd0.dtbo ${STAGE_DIR}/files/sd0-overlay.dts
+echo "dtoverlay=sd0,overclock_50=50" >> ${ROOTFS_DIR}/boot/firmware/config.txt
 
 echo "⚙️ Enable Auto Login" # TODO: This doesn't work
 on_chroot << EOF

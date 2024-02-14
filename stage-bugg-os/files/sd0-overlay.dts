@@ -1,0 +1,40 @@
+/*
+ * Device tree overlay for enabling SD0 using the sdhost interface on GPIO 22-27 by Kristian Sloth Lauszus.
+ */
+
+/dts-v1/;
+/plugin/;
+
+/{
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {
+        target = <&sdhost>;
+        frag0: __overlay__ {
+            pinctrl-names = "default";
+            pinctrl-0 = <&sdhost_pins>;
+            bus-width = <4>;
+            brcm,overclock-50 = <0>;
+            brcm,pio-limit = <1>;
+            status = "okay";
+        };
+    };
+
+    fragment@1 {
+        target = <&gpio>;
+        __overlay__ {
+            sdhost_pins: sdhost_pins {
+                brcm,pins = <22 23 24 25 26 27>;
+                brcm,function = <4 4 4 4 4 4>; /* ALT0: SD0 */
+                brcm,pull = <0 2 2 2 2 2>; /* pull up all except clk */
+            };
+        };
+    };
+
+    __overrides__ {
+        overclock_50 = <&frag0>,"brcm,overclock-50:0";
+        force_pio = <&frag0>,"brcm,force-pio?";
+        pio_limit = <&frag0>,"brcm,pio-limit:0";
+        debug = <&frag0>,"brcm,debug?";
+    };
+};
