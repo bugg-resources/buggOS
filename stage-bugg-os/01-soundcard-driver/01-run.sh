@@ -8,7 +8,7 @@ echo "🔧 Installing Bugg soundcard driver"
 mkdir -p "${ROOTFS_DIR}/opt"
 cp -r "${STAGE_DIR}/files/bugg-soundcard-driver" "${ROOTFS_DIR}/opt/"
 
-# on_chroot << EOF
+on_chroot << EOF
 # cd /opt/bugg-soundcard-driver/codec
 # make
 # make install
