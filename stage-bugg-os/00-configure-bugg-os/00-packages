@@ -7,4 +7,5 @@ ffmpeg
 ntpdate
 libffi-dev
 xterm 
-#raspberrypi-kernel-headers
+raspberrypi-kernel-headers
+i2c-tools
