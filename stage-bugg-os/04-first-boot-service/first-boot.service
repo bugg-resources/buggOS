@@ -1,12 +1,22 @@
 [Unit]
-Description=Run a shell script on first boot. 
-After=multi-user.target
+Description=Runs once on first boot. 
+After=network.target
+Before=first-boot-complete.target
+ConditionFirstBoot=true
 
 [Service]
-Type=oneshot
-ExecStart=/usr/local/bin/first-boot.sh
-RemainAfterExit=yes
+RemainAfterExit=true
 StandardOutput=journal
 
+# Suited for tasks that run for a short time and terminate.
+# Supports multiple ExecStart statements, that run sequentially
+Type=oneshot
+
+# General purpose script for debugging, etc.
+ExecStart=/usr/local/bin/first-boot.sh
+
+# Install the soundcard driver kernel module and device tree blob
+ExecStart=/opt/bugg-soundcard-driver/install.sh
+
 [Install]
-WantedBy=multi-user.target
+WantedBy=first-boot-complete.target

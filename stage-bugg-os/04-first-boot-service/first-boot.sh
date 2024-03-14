@@ -5,32 +5,11 @@
 # Debug statements are logged to the journal.
 # To view the journal, run `journalctl -u first-boot.service -f`
 
-# Because Raspberry Pi OS does a load of weird stuff on forst boot, 
-# like expanding the filesystem, this script is run after the "true"
-# first boot as well, until it is certain that it has run once on a stable footing.
-# This is done by creating a flag file in /opt/.first-boot.sh-ran
-# The flag remains even after the service is disabled, so it will
-# be available for debugging purposes
 
 RAN_FLAG="/opt/.first-boot.sh-ran"   
 
-if [ -f $RAN_FLAG ]; then
-    logger "🚩 RAN flag found. Disable service."
-    systemctl disable first-boot.service
-else
-    logger "👀 RAN flag does not exist - create it."
-    echo "Ran at `date`" >> $RAN_FLAG
-fi
-
 logger -t first-boot.sh "🔧 Bugg-OS First Boot Script"
 
-
-logger "⚙️ Start the watchdog service"
-systemctl enable watchdog
-systemctl start watchdog 
-systemctl status watchdog
-
-logger "⚙️ Disabling first-boot.service"
-# systemctl disable first-boot.service
+echo "Ran at `date`" >> $RAN_FLAG
 
 logger -t first-boot.sh "🍻 First boot script complete."
