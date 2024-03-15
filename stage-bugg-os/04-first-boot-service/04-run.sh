@@ -14,6 +14,6 @@ install -m 755 first-boot.sh "${ROOTFS_DIR}/usr/local/bin/"
 # Create symlink to enable first-boot.service
 on_chroot << EOF
 ln -s /etc/systemd/system/first-boot.service /etc/systemd/system/multi-user.target.wants/first-boot.service
-EOF 
+EOF
 
 echo "🍻 Success installing first boot service!"
