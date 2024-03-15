@@ -1,8 +1,6 @@
 [Unit]
 Description=Runs once on first boot. 
 After=network.target
-Before=first-boot-complete.target
-ConditionFirstBoot=true
 
 [Service]
 RemainAfterExit=true
@@ -17,6 +15,3 @@ ExecStart=/usr/local/bin/first-boot.sh
 
 # Install the soundcard driver kernel module and device tree blob
 ExecStart=/opt/bugg-soundcard-driver/install.sh
-
-[Install]
-WantedBy=first-boot-complete.target
