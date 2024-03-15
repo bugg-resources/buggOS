@@ -10,11 +10,11 @@ StandardOutput=journal
 # Supports multiple ExecStart statements, that run sequentially
 Type=oneshot
 
-# General purpose script for debugging, etc.
-ExecStart=/usr/local/bin/first-boot.sh
-
 # Install the soundcard driver kernel module and device tree blob
 ExecStart=/opt/bugg-soundcard-driver/install.sh
+
+# General purpose script for debugging, etc.
+ExecStart=/usr/local/bin/first-boot.sh
 
 [Install]
 WantedBy=multi-user.target
