@@ -15,3 +15,6 @@ ExecStart=/usr/local/bin/first-boot.sh
 
 # Install the soundcard driver kernel module and device tree blob
 ExecStart=/opt/bugg-soundcard-driver/install.sh
+
+[Install]
+WantedBy=multi-user.target
