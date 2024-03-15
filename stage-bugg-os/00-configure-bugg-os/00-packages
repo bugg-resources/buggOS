@@ -10,3 +10,4 @@ xterm
 raspberrypi-kernel-headers
 i2c-tools
 neovim
+libsystemd-dev
