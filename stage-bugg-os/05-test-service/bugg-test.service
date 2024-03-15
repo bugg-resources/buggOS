@@ -1,0 +1,17 @@
+[Unit]
+Description=Runs once after first-boot.service completes system config to test the hardware.
+After=network.target
+
+[Service]
+RemainAfterExit=true
+StandardOutput=journal
+
+# Suited for tasks that run for a short time and terminate.
+# Supports multiple ExecStart statements, that run sequentially
+Type=oneshot
+
+# Run the test script
+ExecStart=/opt/venv/bin/python3 /opt/bugg-recording/hardware_test.py
+
+[Install]
+WantedBy=multi-user.target
