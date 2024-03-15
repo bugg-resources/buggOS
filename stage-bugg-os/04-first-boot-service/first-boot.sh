@@ -17,7 +17,7 @@ echo "Ran at `date`" >> $RAN_FLAG
 logger -t first-boot.sh "⚙️ Enabling the bugg-test service"
 systemctl enable bugg-test.service
 
-loggger -t first-boot.sh "⚙️ Disabling first-boot.service"
+logger -t first-boot.sh "⚙️ Disabling first-boot.service"
 systemctl disable first-boot.service
 
 logger -t first-boot.sh "🍻 First boot script complete - rebooting the system"
