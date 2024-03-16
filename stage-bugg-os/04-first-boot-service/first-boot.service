@@ -11,6 +11,7 @@ StandardOutput=journal
 Type=oneshot
 
 # Install the soundcard driver kernel module and device tree blob
+WorkingDirectory=/opt/bugg-soundcard-driver
 ExecStart=/opt/bugg-soundcard-driver/install.sh
 
 # General purpose script for debugging, etc.
