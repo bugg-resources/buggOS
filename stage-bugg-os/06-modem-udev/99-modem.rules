@@ -1,0 +1,4 @@
+# This rule sets fixed locations for the modem's character device interfaces, most importantly the AT command interface
+ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="1199", ATTRS{idProduct}=="68c0", ENV{ID_USB_INTERFACE_NUM}=="00", SYMLINK+="tty_modem_interface0"
+ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="1199", ATTRS{idProduct}=="68c0", ENV{ID_USB_INTERFACE_NUM}=="02", SYMLINK+="tty_modem_interface2"
+ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="1199", ATTRS{idProduct}=="68c0", ENV{ID_USB_INTERFACE_NUM}=="03", SYMLINK+="tty_modem_command_interface"
