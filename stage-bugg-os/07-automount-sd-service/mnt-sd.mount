@@ -1,0 +1,10 @@
+[Unit]
+Description=Mount SD Card at /mnt/sd
+
+[Mount]
+What=/dev/mmcblk2p1
+Where=/mnt/sd
+Options=defaults
+
+[Install]
+WantedBy=multi-user.target
