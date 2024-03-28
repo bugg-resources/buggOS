@@ -61,6 +61,5 @@ EOF
 
 echo "🍻 Finished configuring hardware!"
 
-
-#echo ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/bees.txt
-# echo "hello" > ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/bees.txt
+echo "⚙️ Auto-resize serial TTY to fill the terminal emulator window on login"
+echo "resize" > ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.bash_profile
