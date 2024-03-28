@@ -3,7 +3,7 @@
 
 # This script is used to install additional files into the rootfs.
 
-echo "🔧 Installing testing service"
+echo "🔧 Installing buggd recording daemon"
 
 
 # The first-boot.service enables this testing service once the system is fully configured

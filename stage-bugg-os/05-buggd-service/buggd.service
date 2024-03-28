@@ -1,0 +1,17 @@
+[Unit]
+Description=buggd - Bugg Recording Daemon
+Wants=mnt-sd.mount
+After=mnt-sd.mount network.target
+
+[Service]
+# Suited for non-forking daemons
+Type=simple
+
+# Log Standard Output and Standard Error to systemd journal
+StandardOutput=journal
+
+# Launch buggd
+ExecStart=/opt/venv/bin/python3 /opt/venv/bin/buggd
+
+[Install]
+WantedBy=multi-user.target
