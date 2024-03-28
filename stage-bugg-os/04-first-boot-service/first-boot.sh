@@ -15,7 +15,7 @@ echo "Ran at `date`" >> $RAN_FLAG
 # the system had rebooted once, and the first-boot.service has run, installing the Bugg soundcard driver.
 # Now we enable the testing service, disable the first-boot service, and reboot the system so the soundcard driver can load.
 logger -t first-boot.sh "⚙️ Enabling the bugg-test service"
-systemctl enable bugg-test.service
+systemctl enable buggd.service
 
 logger -t first-boot.sh "⚙️ Disabling first-boot.service"
 systemctl disable first-boot.service

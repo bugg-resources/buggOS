@@ -1,6 +1,6 @@
 [Unit]
 Description=Runs once on first boot. 
-After=network.target
+After=mult-user.target
 
 [Service]
 RemainAfterExit=true
