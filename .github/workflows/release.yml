@@ -19,9 +19,10 @@ jobs:
             -   name: Checkout pi-gen
                 uses: actions/checkout@v4
                 with:
-                    repository: RPi-Distro/pi-gen
-                    #ref: arm64
-                    ref: 2024-03-12-raspios-bookworm-arm64
+                    #repository: RPi-Distro/pi-gen
+                    #ref: 2024-03-12-raspios-bookworm-arm64
+                    repository: jeffmakes/pi-gen
+                    ref: arm64
                     path: pi-gen
 
             -   name: Checkout Bugg Userspace Recording Firmware
