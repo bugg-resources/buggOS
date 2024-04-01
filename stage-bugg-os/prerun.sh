@@ -7,4 +7,6 @@ if [ ! -d "${ROOTFS_DIR}" ]; then
 fi
 
 cp buggd.list ${ROOTFS_DIR}/etc/apt/sources.list.d/buggd.list
+on_chroot << EOF
 apt update
+EOF
