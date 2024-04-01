@@ -1,0 +1,2 @@
+#️ Auto-resize serial TTY to fill the terminal emulator window on login
+resize

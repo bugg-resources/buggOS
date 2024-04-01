@@ -59,7 +59,7 @@ on_chroot << EOF
 SUDO_USER="${FIRST_USER_NAME}" raspi-config nonint do_change_timezone UTC
 EOF
 
-echo "🍻 Finished configuring hardware!"
+install -m 644 issue ${ROOTFS_DIR}/etc/issue
+install -m 644 bash_profile ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.bash_profile
 
-echo "⚙️ Auto-resize serial TTY to fill the terminal emulator window on login"
-echo "resize" > ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.bash_profile
+echo "🍻 Finished base OS configuration!"
