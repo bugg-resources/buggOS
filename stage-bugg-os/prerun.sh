@@ -7,3 +7,4 @@ if [ ! -d "${ROOTFS_DIR}" ]; then
 fi
 
 cp buggd.list ${ROOTFS_DIR}/etc/apt/sources.list.d/buggd.list
+apt update
