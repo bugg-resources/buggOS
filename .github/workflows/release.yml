@@ -19,10 +19,9 @@ jobs:
             -   name: Checkout pi-gen
                 uses: actions/checkout@v4
                 with:
-                    #repository: RPi-Distro/pi-gen
-                    #ref: 2024-03-12-raspios-bookworm-arm64
-                    repository: jeffmakes/pi-gen
-                    ref: arm64
+                    repository: RPi-Distro/pi-gen
+                    ref: 2024-03-12-raspios-bookworm-arm64
+                    #ref: arm64
                     path: pi-gen
 
             -   name: Checkout Bugg Userspace Recording Firmware
@@ -79,9 +78,9 @@ jobs:
                     cd pi-gen
                     sudo ./build.sh
 
-            # -   name: Upload Bugg OS image
-            #     if: false
-            #     uses: actions/upload-artifact@v3
-            #     with:
-            #         name: BuggOS
-            #         path: pi-gen/deploy/*BuggOS*
+            -   name: Upload Bugg OS image
+                if: true
+                uses: actions/upload-artifact@v3
+                with:
+                    name: BuggOS
+                    path: pi-gen/deploy/*BuggOS*
