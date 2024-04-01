@@ -11,7 +11,7 @@ Type=simple
 StandardOutput=journal
 
 # Launch buggd
-ExecStart=/opt/venv/bin/python3 /opt/venv/bin/buggd
+ExecStart=buggd
 
 [Install]
 WantedBy=multi-user.target
