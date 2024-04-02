@@ -60,15 +60,18 @@ jobs:
                     python3-dev \
                     device-tree-compiler \
 
-            -   name: Set release version
-                run: |
-                    export VERSION=$(git describe --tags --always)
-                    echo "IMG_FILENAME=$VERSION" > pi-gen/config
-                    echo "ARCHIVE_FILENAME=$VERSION" > pi-gen/config
-                    echo "IMG_SUFFIX=\"\"" >> pi-gen/config
+            # -   name: Set release version
+            #     run: |
+            #         export VERSION=$(git describe --tags --always)
+            #         echo "IMG_FILENAME=$VERSION" > pi-gen/config
+            #         echo "ARCHIVE_FILENAME=$VERSION" > pi-gen/config
+            #         echo "IMG_SUFFIX=\"\"" >> pi-gen/config
 
             -   name: Build Bugg OS
                 run: |
+                    export IMG_FILENAME="Adze-0.1.0-alpha"
+                    export ARCHIVE_FILENAME="Adze-0.1.0-alpha"
+                    export IMG_SUFFIX=""
                     touch pi-gen/stage3/SKIP
                     touch pi-gen/stage4/SKIP
                     touch pi-gen/stage5/SKIP
