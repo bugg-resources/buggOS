@@ -66,7 +66,7 @@ jobs:
                     echo "IMG_FILENAME=$VERSION" >> config
                     echo "ARCHIVE_FILENAME=$VERSION" >> config
                     echo "IMG_SUFFIX=\"\"" >> config
-                    sed "s/VERSION/$VERSION/g" stage-bugg-os/00-configure-bugg-os/issue-template > stage-bugg-os/00-configure-bugg-os/issue
+                    sed "s/VERSION/$VERSION/g" stage-bugg-os/00-configure-bugg-os/issue_template > stage-bugg-os/00-configure-bugg-os/issue
                     touch pi-gen/stage3/SKIP
                     touch pi-gen/stage4/SKIP
                     touch pi-gen/stage5/SKIP
