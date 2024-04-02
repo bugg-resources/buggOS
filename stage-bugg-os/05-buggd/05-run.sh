@@ -3,7 +3,15 @@
 
 # This script is used to install additional files into the rootfs.
 
-echo "🔧 Installing buggd recording daemon service"
+echo "🔧 Installing buggd recording daemon"
+
+echo "🔧 Installing bugg-recording Python application package into venv"
+on_chroot << EOF
+source /opt/venv/bin/activate
+pip3 install -e /opt/bugg-recording
+EOF
+
+echo "🍻 Success installing bugg-recording"
 
 
 # The first-boot.service enables this testing service once the system is fully configured
