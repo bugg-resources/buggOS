@@ -84,6 +84,7 @@ jobs:
                     echo "RELEASE_VERSION=${{ env.RELEASE_VERSION }}"
                     echo "Workspace Path=${{ github.workspace }}"
                     echo "Full Path=${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz"
+                    echo "`ls -l ${{ github.workspace }}/pi-gen/deploy`"
                    
             -   name: Verify Image Exists
                 run: |
