@@ -28,4 +28,11 @@ echo "🍻 Success installing buggd package!"
 echo "⚙️ Install buggd.service"
 install -m 644 buggd.service "${ROOTFS_DIR}/etc/systemd/system/"
 
+echo "⚙️ Install factory test warning issue file"
+install -m 644 factory_test_warning.txt ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/factory_test_results.txt
+on_chroot << EOF
+mkdir -p /etc/issue.d
+ln -s "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/factory_test_results.txt" /etc/issue.d/factory_test_results.issue
+EOF
+
 echo "🍻 Success installing buggd service!"
