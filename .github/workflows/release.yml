@@ -60,6 +60,13 @@ jobs:
                     python3-dev \
                     device-tree-compiler \
 
+            -   name: Get Artifact Filename
+                id: get_filename
+                run: |
+                    echo "::set-output name=FILENAME::$(ls pi-gen/deploy/*.gz)"
+                shell: bash
+
+
             -   name: Build Bugg OS
                 run: |
                     export VERSION=$(git describe --tags --always)
@@ -81,5 +88,5 @@ jobs:
                 if: ${{ github.actions }}
                 uses: actions/upload-artifact@v3
                 with:
-                    name: buggOS
-                    path: pi-gen/deploy/*
+                    name: ${{ steps.get_filename.outputs.FILENAME }}
+                    path: ${{ steps.get_filename.outputs.FILENAME }}
