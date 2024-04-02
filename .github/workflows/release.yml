@@ -60,20 +60,13 @@ jobs:
                     python3-dev \
                     device-tree-compiler \
 
-            -   name: Get Artifact Filename
-                id: get_filename
-                run: |
-                    echo "::set-output name=FILENAME::$(ls pi-gen/deploy/*.gz)"
-                shell: bash
-
-
             -   name: Build Bugg OS
                 run: |
-                    export VERSION=$(git describe --tags --always)
-                    echo "IMG_FILENAME=$VERSION" >> config
-                    echo "ARCHIVE_FILENAME=$VERSION" >> config
+                    echo "RELEASE_VERSION=$(git describe --tags --always)" >> $GITHUB_ENV
+                    echo "IMG_FILENAME=$RELEASE_VERSION" >> config
+                    echo "ARCHIVE_FILENAME=$RELEASE_VERSION" >> config
                     echo "IMG_SUFFIX=\"\"" >> config
-                    sed "s/VERSION/$VERSION/g" stage-bugg-os/00-configure-bugg-os/issue_template > stage-bugg-os/00-configure-bugg-os/issue
+                    sed "s/VERSION/$RELEASE_VERSION/g" stage-bugg-os/00-configure-bugg-os/issue_template > stage-bugg-os/00-configure-bugg-os/issue
                     touch pi-gen/stage3/SKIP
                     touch pi-gen/stage4/SKIP
                     touch pi-gen/stage5/SKIP
@@ -85,9 +78,8 @@ jobs:
                     sudo ./build.sh
 
             -   name: Upload Bugg OS image
-                # if: ${{ github.actions }}
-                if: true
+                if: ${{ github.actions }}
                 uses: actions/upload-artifact@v3
                 with:
-                    name: ${{ steps.get_filename.outputs.FILENAME }}
-                    path: ${{ steps.get_filename.outputs.FILENAME }}
+                    name: ${{ env.RELEASE_VERSION }}
+                    path: ${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz
