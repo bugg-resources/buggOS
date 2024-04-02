@@ -7,5 +7,3 @@ xterm # Provides resize utility, which is handy for serial console debugging
 raspberrypi-kernel-headers # Required for building the soundcard driver
 i2c-tools # Provides i2cdetect utility - handy for debugging I2C devices
 neovim
-virtualenv # Required for building the buggd python package
-buggd
