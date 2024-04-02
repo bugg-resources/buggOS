@@ -24,12 +24,6 @@ jobs:
                     #ref: arm64
                     path: pi-gen
 
-            -   name: Checkout Bugg Userspace Recording Firmware
-                uses: actions/checkout@v4
-                with:
-                    repository: jeffmakes/bugg-recording
-                    path: stage-bugg-os/files/bugg-recording
-                
             -   name: Checkout Bugg Soundcard Driver
                 uses: actions/checkout@v4
                 with:
@@ -65,6 +59,12 @@ jobs:
                     kmod \
                     python3-dev \
                     device-tree-compiler \
+
+            -   name: Set release version
+                run: |
+                    export IMG_FILENAME="Adze-0.1.0-alpha"
+                    export ARCHIVE_FILENAME="Adze-0.1.0-alpha"
+                    export IMG_SUFFIX=""
 
             -   name: Build Bugg OS
                 run: |
