@@ -85,7 +85,8 @@ jobs:
                     sudo ./build.sh
 
             -   name: Upload Bugg OS image
-                if: ${{ github.actions }}
+                # if: ${{ github.actions }}
+                if: true
                 uses: actions/upload-artifact@v3
                 with:
                     name: ${{ steps.get_filename.outputs.FILENAME }}
