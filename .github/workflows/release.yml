@@ -83,19 +83,6 @@ jobs:
                     echo "Workspace Path=${{ github.workspace }}"
                     echo "Full Path=${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz"
                    
-            -   name: List artifacts
-                uses: actions/github-script@v5
-                with:
-                    script: |
-                        with:
-                            script: |
-                            const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
-                                owner: context.repo.owner,
-                                repo: context.repo.repo,
-                                run_id: context.runId
-                            });
-                        console.log(artifacts.data);
-
             -   name: Verify Image Exists
                 run: |
                         if [ -f "${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz" ]; then
