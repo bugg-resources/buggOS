@@ -60,6 +60,12 @@ jobs:
                     python3-dev \
                     device-tree-compiler \
 
+            -   name: Set release version
+                run: |
+                    export IMG_FILENAME="Adze-0.1.0-alpha"
+                    export ARCHIVE_FILENAME="Adze-0.1.0-alpha"
+                    export IMG_SUFFIX=""
+
             -   name: Build Bugg OS
                 run: |
                     touch pi-gen/stage3/SKIP
