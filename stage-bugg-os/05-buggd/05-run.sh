@@ -12,7 +12,7 @@
 
 echo "🔧 Configuring venv"
 on_chroot << EOF
-python3 -m venv --system-site-packages /opt/venv
+python3 -m venv /opt/venv
 EOF
 
 echo "🔧 Installing bugg-recording Python application package into venv"
