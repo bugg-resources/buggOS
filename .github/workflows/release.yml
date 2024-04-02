@@ -80,5 +80,5 @@ jobs:
                 if: true
                 uses: actions/upload-artifact@v3
                 with:
-                    name: BuggOS
+                    name: buggOS
                     path: pi-gen/deploy/*
