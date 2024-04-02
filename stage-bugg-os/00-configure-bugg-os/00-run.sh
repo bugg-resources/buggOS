@@ -61,5 +61,7 @@ EOF
 
 install -m 644 issue ${ROOTFS_DIR}/etc/issue
 install -m 644 bash_profile ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.bash_profile
+install -m 644 factory_test_warning.txt ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/factory_test_results.txt
+ln -s "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/factory_test_results.txt" /etc/issue.d/factory_test_results.issue
 
 echo "🍻 Finished base OS configuration!"
