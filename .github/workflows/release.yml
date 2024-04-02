@@ -60,13 +60,6 @@ jobs:
                     python3-dev \
                     device-tree-compiler \
 
-            # -   name: Set release version
-            #     run: |
-            #         export VERSION=$(git describe --tags --always)
-            #         echo "IMG_FILENAME=$VERSION" > pi-gen/config
-            #         echo "ARCHIVE_FILENAME=$VERSION" > pi-gen/config
-            #         echo "IMG_SUFFIX=\"\"" >> pi-gen/config
-
             -   name: Build Bugg OS
                 run: |
                     export VERSION=$(git describe --tags --always)
@@ -83,9 +76,9 @@ jobs:
                     cd pi-gen
                     sudo ./build.sh
 
-            # -   name: Upload Bugg OS image
-            #     if: true
-            #     uses: actions/upload-artifact@v3
-            #     with:
-            #         name: BuggOS
-            #         path: pi-gen/deploy/*BuggOS*
+            -   name: Upload Bugg OS image
+                if: true
+                uses: actions/upload-artifact@v3
+                with:
+                    name: BuggOS
+                    path: pi-gen/deploy/*BuggOS*
