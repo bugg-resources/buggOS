@@ -78,7 +78,7 @@ jobs:
                     sudo ./build.sh
 
             -   name: Upload Bugg OS image
-                if: true
+                if: ${{ github.actions }}
                 uses: actions/upload-artifact@v3
                 with:
                     name: buggOS
