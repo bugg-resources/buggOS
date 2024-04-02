@@ -69,6 +69,7 @@ jobs:
 
             -   name: Build Bugg OS
                 run: |
+                    export VERSION=$(git describe --tags --always)
                     echo "IMG_FILENAME=$VERSION" >> config
                     echo "ARCHIVE_FILENAME=$VERSION" >> config
                     echo "IMG_SUFFIX=\"\"" >> config
