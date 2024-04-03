@@ -93,7 +93,7 @@ jobs:
                     echo "${{ env.ARTIFACT }}"
 
             -   name: Verify Image Exists
-                if: env.GITHUB_ACTION != null
+                if: ${{ !env.ACT }}
                 run: |
                         if [ -f "${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz" ]; then
                             echo "File exists and will be uploaded."
@@ -105,7 +105,7 @@ jobs:
 
             -   name: Upload Bugg OS image
                 # Only upload the image if we're running in a GitHub Action. This test doesn't work.
-                if: env.GITHUB_ACTION != null
+                if: ${{ !env.ACT }}
                 uses: actions/upload-artifact@v3
                 with:
                     name: ${{ env.RELEASE_VERSION }}
