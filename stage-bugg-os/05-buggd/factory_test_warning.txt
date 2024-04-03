@@ -1,6 +1,6 @@
 
 WARNING! Factory test has never run on this unit.
 
-Suppress this warning by forcing test with buggd (see CLI arguments)
+Test can be run by forcing with buggd (see CLI arguments)
 or by inserting an SD card with a trigger file and rebooting.
 
