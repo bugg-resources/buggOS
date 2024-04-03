@@ -24,10 +24,10 @@ if [[ $url != http* ]]; then
 fi
 
 TADA="fish -c tada"
-
+set -o pipefail # fail on any error in a pipeline
 time curl \
   $KEY \
   $url \
   | gunzip \
   | sudo dd bs=10M of=BUGG \
-  && $TADA
+  && tada
