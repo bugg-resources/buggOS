@@ -85,8 +85,10 @@ jobs:
                     echo "Workspace Path=${{ github.workspace }}"
                     echo "Full Path=${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz"
                     echo "`ls -l ${{ github.workspace }}/pi-gen/deploy`"
-                   
+                    echo "`file ${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz`"
+
             -   name: Verify Image Exists
+                if: ${{ github.actions }}
                 run: |
                         if [ -f "${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz" ]; then
                             echo "File exists and will be uploaded."
