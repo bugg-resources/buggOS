@@ -11,6 +11,6 @@ touch pi-gen/stage5/SKIP
 touch pi-gen/stage4/SKIP_IMAGES
 touch pi-gen/stage5/SKIP_IMAGES
 cp config pi-gen/config
-cp -R stage-bugg-os pi-gen
+cp -R stage-buggOS pi-gen
 cd pi-gen
 #sudo ./build.sh

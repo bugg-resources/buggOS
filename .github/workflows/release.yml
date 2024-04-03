@@ -30,7 +30,7 @@ jobs:
                 uses: actions/checkout@v4
                 with:
                     repository: jeffmakes/bugg-soundcard-driver
-                    path: stage-bugg-os/files/bugg-soundcard-driver
+                    path: stage-buggOS/files/bugg-soundcard-driver
 
             -   name: Install Dependencies for the pi-gen build
                 run: |
@@ -70,13 +70,13 @@ jobs:
                     echo "IMG_FILENAME=$RELEASE_VERSION" >> pi-gen/config
                     echo "ARCHIVE_FILENAME=$RELEASE_VERSION" >> pi-gen/config
                     echo "IMG_SUFFIX=\"\"" >> pi-gen/config
-                    sed "s/VERSION/$RELEASE_VERSION/g" stage-bugg-os/00-configure-bugg-os/issue_template > stage-bugg-os/00-configure-bugg-os/issue
+                    sed "s/VERSION/$RELEASE_VERSION/g" stage-buggOS/00-configure-buggOS/issue_template > stage-buggOS/00-configure-buggOS/issue
                     touch pi-gen/stage3/SKIP
                     touch pi-gen/stage4/SKIP
                     touch pi-gen/stage5/SKIP
                     touch pi-gen/stage4/SKIP_IMAGES
                     touch pi-gen/stage5/SKIP_IMAGES
-                    cp -R stage-bugg-os pi-gen
+                    cp -R stage-buggOS pi-gen
                     cd pi-gen
                     sudo ./build.sh
 

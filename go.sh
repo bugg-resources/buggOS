@@ -2,9 +2,9 @@
 
 # Copy current build files into /pi-gen
 rm pi-gen/config
-rm -rf pi-gen/stage-bugg-os
+rm -rf pi-gen/stage-buggOS
 cp config pi-gen/config
-cp -R stage-bugg-os pi-gen
+cp -R stage-buggOS pi-gen
 
 # Run the build
 cd pi-gen

@@ -1,7 +1,7 @@
 #!/bin/bash -e
 # -e flag causes the script to exit if any command returns a non-zero exit code
 
-echo "Running stage-bugg-os/00-configure-bugg-os/00-run.sh"
+echo "Running stage-buggOS/00-configure-buggOS/00-run.sh"
 echo "🔧 Configuring the Raspberry Pi Hardware"
 
 echo "⚙️ Enable Verbose Boot Messages"

@@ -6,7 +6,7 @@
 # To view the journal, run `journalctl -u first-boot.service -f`
 
 
-logger -t first-boot.sh "🔧 Bugg-OS First Boot Script"
+logger -t first-boot.sh "🔧 buggOS First Boot Script"
 
 RAN_FLAG="/opt/.first-boot.sh-ran"   
 echo "Ran at `date`" >> $RAN_FLAG

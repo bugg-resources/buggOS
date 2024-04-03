@@ -10,12 +10,12 @@ if [ -z "$container_id" ]; then
 fi
 
 # Source path inside the container
-file_pattern="/home/ubuntu/bugg-os/pi-gen/deploy/*.gz"
+file_pattern="/home/ubuntu/buggOS/pi-gen/deploy/*.gz"
 matching_file=$(docker exec "$container_id" sh -c "ls $file_pattern")
 source_path=$matching_file
 
 # Destination path on the host
-destination_path="/home/ubuntu/bugg-os/deploy"
+destination_path="/home/ubuntu/buggOS/deploy"
 mkdir -p "$destination_path"
 
 # Copy the file from the container to the host
