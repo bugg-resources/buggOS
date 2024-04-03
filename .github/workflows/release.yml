@@ -4,7 +4,8 @@ on: workflow_dispatch
 
 jobs:
     image-builder:
-        runs-on: ubuntu-latest
+        #runs-on: ubuntu-latest
+        runs-on: cheese_it
         steps:
             -   uses: actions/checkout@v4
             -   name: Set up SSH debug console
@@ -103,7 +104,7 @@ jobs:
                       
 
             -   name: Upload Bugg OS image
-                # Only upload the image if we're running in a GitHub Action  
+                # Only upload the image if we're running in a GitHub Action. This test doesn't work.
                 if: env.GITHUB_ACTION != null
                 uses: actions/upload-artifact@v3
                 with:
