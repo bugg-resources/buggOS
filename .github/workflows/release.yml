@@ -72,7 +72,7 @@ jobs:
                 touch pi-gen/stage5/SKIP_IMAGES
                 cp -R stage-buggOS pi-gen
                 cd pi-gen
-                ./build.sh
+                sudo ./build.sh
             
 
         -   name: Debug Environment Variables
