@@ -64,18 +64,18 @@ jobs:
 
             -   name: Build Bugg OS
                 run: |
-                    echo "RELEASE_VERSION=$(git describe --tags --always)" >> $GITHUB_ENV
+                    cp config pi-gen/config
                     export RELEASE_VERSION=$(git describe --tags --always)
-                    echo "IMG_FILENAME=$RELEASE_VERSION" >> config
-                    echo "ARCHIVE_FILENAME=$RELEASE_VERSION" >> config
-                    echo "IMG_SUFFIX=\"\"" >> config
+                    echo "RELEASE_VERSION=$RELEASE_VERSION" >> $GITHUB_ENV
+                    echo "IMG_FILENAME=$RELEASE_VERSION" >> pi-gen/config
+                    echo "ARCHIVE_FILENAME=$RELEASE_VERSION" >> pi-gen/config
+                    echo "IMG_SUFFIX=\"\"" >> pi-gen/config
                     sed "s/VERSION/$RELEASE_VERSION/g" stage-bugg-os/00-configure-bugg-os/issue_template > stage-bugg-os/00-configure-bugg-os/issue
                     touch pi-gen/stage3/SKIP
                     touch pi-gen/stage4/SKIP
                     touch pi-gen/stage5/SKIP
                     touch pi-gen/stage4/SKIP_IMAGES
                     touch pi-gen/stage5/SKIP_IMAGES
-                    cp config pi-gen/config
                     cp -R stage-bugg-os pi-gen
                     cd pi-gen
                     sudo ./build.sh
@@ -84,9 +84,12 @@ jobs:
                 run: |
                     echo "RELEASE_VERSION=${{ env.RELEASE_VERSION }}"
                     echo "Workspace Path=${{ github.workspace }}"
-                    echo "Full Path=${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz"
                     echo "`ls -l ${{ github.workspace }}/pi-gen/deploy`"
-                    echo "`file ${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz`"
+                    export ARTIFACT="${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz"
+                    echo "ARTIFACT=$ARTIFACT" >> $GITHUB_ENV
+                    echo "artifact=${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz"
+                    echo "ARTIFACT=$ARTIFACT"
+                    echo "${{ env.ARTIFACT }}"
 
             -   name: Verify Image Exists
                 if: ${{ github.actions }}
@@ -104,4 +107,6 @@ jobs:
                 uses: actions/upload-artifact@v3
                 with:
                     name: ${{ env.RELEASE_VERSION }}
-                    path: ${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz
+                    path: ${{ env.ARTIFACT }}
+                    #path: ${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz
+
