@@ -4,8 +4,8 @@ on: workflow_dispatch
 
 jobs:
     image-builder:
-        #runs-on: ubuntu-latest
-        runs-on: cheese_it
+        runs-on: ubuntu-latest
+        #runs-on: cheese_it
         steps:
             -   uses: actions/checkout@v4
             -   name: Set up SSH debug console
