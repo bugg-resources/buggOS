@@ -29,5 +29,5 @@ time curl \
   $KEY \
   $url \
   | gunzip \
-  | sudo dd bs=10M of=BUGG \
+  | sudo dd bs=10M of=$BUGG \
   && tada
