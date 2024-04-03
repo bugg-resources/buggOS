@@ -3,112 +3,141 @@ name: Bugg OS Release Build
 on: workflow_dispatch
 
 jobs:
-    image-builder:
+    build:
         runs-on: ubuntu-latest
+        outputs:
+            release_version: ${{ steps.version.outputs.release_version }}
+
         #runs-on: cheese_it
         steps:
-            -   uses: actions/checkout@v4
-            -   name: Set up SSH debug console
-                if: false   # set to true to enable debugging over SSH
-                uses: mxschmitt/action-tmate@v3
-                with:
-                    detached: true
+        -   name: Checkout Bugg OS 
+            uses: actions/checkout@v4
+            with:
+                fetch-depth: 0 # fetch all history, including tags, so that we can determine the release version
 
-            -   name: Checkout Bugg OS 
-                uses: actions/checkout@v4
-                with:
-                    fetch-depth: 0 # fetch all history, including tags, so that we can determine the release version
 
-            -   name: Checkout pi-gen
-                uses: actions/checkout@v4
-                with:
-                    repository: RPi-Distro/pi-gen
-                    ref: 2024-03-12-raspios-bookworm-arm64
-                    #ref: arm64
-                    path: pi-gen
+        -   uses: actions/checkout@v4
+        -   name: Set up SSH debug console
+            if: false   # set to true to enable debugging over SSH
+            uses: mxschmitt/action-tmate@v3
+            with:
+                detached: true
 
-            -   name: Checkout Bugg Soundcard Driver
-                uses: actions/checkout@v4
-                with:
-                    repository: jeffmakes/bugg-soundcard-driver
-                    path: stage-buggOS/files/bugg-soundcard-driver
 
-            -   name: Install Dependencies for the pi-gen build
-                run: |
-                    sudo apt-get update
-                    sudo apt-get install -y \
-                    coreutils \
-                    quilt \
-                    parted \
-                    qemu-user-static \
-                    debootstrap \
-                    zerofree \
-                    zip \
-                    dosfstools \
-                    libarchive-tools \
-                    libcap2-bin \
-                    grep \
-                    rsync \
-                    xz-utils \
-                    file \
-                    git \
-                    curl \
-                    bc \
-                    qemu-utils \
-                    kpartx \
-                    gpg \
-                    pigz \
-                    xxd \
-                    kmod \
-                    python3-dev \
-                    device-tree-compiler \
+        -   name: Get the release version
+            id: version
+            run: |
+                RELEASE_VERSION=$(git describe --tags --always)
+                echo "RELEASE_VERSION=$RELEASE_VERSION" >> $GITHUB_ENV
+                echo "release_version=$RELEASE_VERSION" >> $GITHUB_OUTPUT
 
-            -   name: Build Bugg OS
-                run: |
-                    cp config pi-gen/config
-                    export RELEASE_VERSION=buggOS_$(git describe --tags --always)
-                    echo "RELEASE_VERSION=$RELEASE_VERSION" >> $GITHUB_ENV
-                    echo "IMG_FILENAME=$RELEASE_VERSION" >> pi-gen/config
-                    echo "ARCHIVE_FILENAME=$RELEASE_VERSION" >> pi-gen/config
-                    echo "IMG_SUFFIX=\"\"" >> pi-gen/config
-                    sed "s/VERSION/$RELEASE_VERSION/g" stage-buggOS/00-configure-buggOS/issue_template > stage-buggOS/00-configure-buggOS/issue
-                    touch pi-gen/stage3/SKIP
-                    touch pi-gen/stage4/SKIP
-                    touch pi-gen/stage5/SKIP
-                    touch pi-gen/stage4/SKIP_IMAGES
-                    touch pi-gen/stage5/SKIP_IMAGES
-                    cp -R stage-buggOS pi-gen
-                    cd pi-gen
-                    sudo ./build.sh
 
-            -   name: Debug Environment Variables
-                run: |
-                    echo "RELEASE_VERSION=${{ env.RELEASE_VERSION }}"
-                    echo "Workspace Path=${{ github.workspace }}"
-                    echo "`ls -l ${{ github.workspace }}/pi-gen/deploy`"
-                    export ARTIFACT="${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz"
-                    echo "ARTIFACT=$ARTIFACT" >> $GITHUB_ENV
-                    echo "artifact=${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz"
-                    echo "ARTIFACT=$ARTIFACT"
-                    echo "${{ env.ARTIFACT }}"
+        -   name: Checkout pi-gen
+            uses: actions/checkout@v4
+            with:
+                repository: RPi-Distro/pi-gen
+                ref: 2024-03-12-raspios-bookworm-arm64
+                #ref: arm64
+                path: pi-gen
 
-            -   name: Verify Image Exists
-                if: ${{ !env.ACT }}
-                run: |
-                        if [ -f "${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz" ]; then
-                            echo "File exists and will be uploaded."
-                        else
-                            echo "File does not exist, check previous steps."
-                            exit 1
-                        fi
-                      
 
-            -   name: Upload Bugg OS image
-                # Only upload the image if we're running in a GitHub Action. This test doesn't work.
-                if: ${{ !env.ACT }}
-                uses: actions/upload-artifact@v3
-                with:
-                    name: ${{ env.RELEASE_VERSION }}
-                    path: ${{ env.ARTIFACT }}
-                    #path: ${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz
+        -   name: Checkout Bugg Soundcard Driver
+            uses: actions/checkout@v4
+            with:
+                repository: jeffmakes/bugg-soundcard-driver
+                path: stage-buggOS/files/bugg-soundcard-driver
 
+
+        -   name: Install Dependencies for the pi-gen build
+            run: |
+                apt-get update
+                cat pi-gen/depends | xargs sudo apt-get install -y
+
+
+        -   name: Install Dependencies specific to Bugg OS
+            run: |
+                apt-get update
+                cat depends | xargs apt-get sudo install -y
+
+
+        -   name: Build Bugg OS
+            run: |
+                cp config pi-gen/config
+                echo "IMG_FILENAME=$RELEASE_VERSION" >> pi-gen/config
+                echo "ARCHIVE_FILENAME=$RELEASE_VERSION" >> pi-gen/config
+                echo "IMG_SUFFIX=\"\"" >> pi-gen/config
+                sed "s/VERSION/$RELEASE_VERSION/g" stage-buggOS/00-configure-buggOS/issue_template > stage-buggOS/00-configure-buggOS/issue
+                touch pi-gen/stage3/SKIP
+                touch pi-gen/stage4/SKIP
+                touch pi-gen/stage5/SKIP
+                touch pi-gen/stage4/SKIP_IMAGES
+                touch pi-gen/stage5/SKIP_IMAGES
+                cp -R stage-buggOS pi-gen
+                cd pi-gen
+                ./build.sh
+            
+
+        -   name: Debug Environment Variables
+            run: |
+                echo "RELEASE_VERSION=${{ env.RELEASE_VERSION }}"
+                echo "Workspace Path=${{ github.workspace }}"
+                echo "`ls -l ${{ github.workspace }}/pi-gen/deploy`"
+                echo "artifact is at ${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz"
+
+
+        -   name: Verify Image Exists
+            if: ${{ !env.ACT }}
+            run: |
+                    if [ -f "${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz" ]; then
+                        echo "File exists and will be uploaded."
+                    else
+                        echo "File does not exist, check previous steps."
+                        exit 1
+                    fi
+                    
+
+        -   name: Upload Bugg OS image
+            # Only upload the image if we're running in a GitHub Action. This test doesn't work.
+            if: true or ${{ !env.ACT }}
+            uses: actions/upload-artifact@v3
+            with:
+                #name: ${{ env.RELEASE_VERSION }}
+                name: buggOS_artifact
+                path: pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz"
+
+
+    release:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+        -   uses: actions/checkout@v2
+
+
+        -   name: Download Bugg OS image
+            uses: actions/download-artifact@v2
+            with:
+                name: buggOS_artifact
+
+        
+        -   name: Create Release
+            id: create_release
+            uses: actions/create-release@v1
+            env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+                tag_name: ${{ needs.build.outputs.release_version }}
+                release_name: ${{ needs.build.outputs.release_version }}
+                draft: false
+                prerelease: false
+
+
+        -   name: Upload Release Asset        
+            uses: actions/upload-release-asset@v1
+            env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+                upload_url: ${{ steps.create_release.outputs.upload_url }}
+                asset_path: ./${{ needs.build.outputs.release_version }}-lite.img.gz
+                asset_name: buggOS_artifact
+                asset_content_type: application/octet-stream
+                
