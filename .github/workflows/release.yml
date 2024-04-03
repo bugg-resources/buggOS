@@ -1,4 +1,4 @@
-name: Bugg OS Release Build
+name: buggOS 
 
 on: workflow_dispatch
 
