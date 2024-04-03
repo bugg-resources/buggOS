@@ -4,8 +4,10 @@ on: workflow_dispatch
 
 jobs:
     build:
-        #runs-on: cheese_it
-        runs-on: ubuntu-latest
+        # Custom larger runner, but still x86_64
+        # Make sure to set the runs-on: field below to match
+        runs-on: stride
+        #runs-on: ubuntu-latest
         outputs:
             release_version: ${{ steps.version.outputs.release_version }}
 
@@ -115,7 +117,8 @@ jobs:
 
     release:
         needs: build
-        runs-on: ubuntu-latest
+        runs-on: stride
+        #runs-on: ubuntu-latest
         steps:
         -   uses: actions/checkout@v2
 
