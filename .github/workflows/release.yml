@@ -110,9 +110,8 @@ jobs:
             if: true or ${{ !env.ACT }}
             uses: actions/upload-artifact@v3
             with:
-                #name: ${{ env.RELEASE_VERSION }}
                 name: buggOS_artifact
-                path: pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz"
+                path: ${{ github.workspace }}/pi-gen/deploy/${{ env.RELEASE_VERSION }}-lite.img.gz
 
 
     release:
