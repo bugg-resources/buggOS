@@ -50,14 +50,12 @@ jobs:
 
         -   name: Install Dependencies for the pi-gen build
             run: |
-                sudo apt-get update
-                cat pi-gen/depends | xargs sudo apt-get install -y
+                ./install_depends.sh pi-gen/depends
 
 
         -   name: Install Dependencies specific to Bugg OS
             run: |
-                sudo apt-get update
-                cat depends | xargs apt-get sudo install -y
+                ./install_depends.sh depends
 
 
         -   name: Build Bugg OS
