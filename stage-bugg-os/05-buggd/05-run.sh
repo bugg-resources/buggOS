@@ -20,7 +20,7 @@ on_chroot << EOF
 source /opt/venv/bin/activate
 pip3 install --upgrade pip setuptools wheel
 pip3 install git+https://github.com/jeffmakes/buggd.git
-EOIMG_FILENAMEF
+EOF
 
 echo "🍻 Success installing buggd package!"
 
