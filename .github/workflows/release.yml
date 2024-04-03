@@ -65,6 +65,7 @@ jobs:
             -   name: Build Bugg OS
                 run: |
                     echo "RELEASE_VERSION=$(git describe --tags --always)" >> $GITHUB_ENV
+                    export RELEASE_VERSION=$(git describe --tags --always)
                     echo "IMG_FILENAME=$RELEASE_VERSION" >> config
                     echo "ARCHIVE_FILENAME=$RELEASE_VERSION" >> config
                     echo "IMG_SUFFIX=\"\"" >> config
