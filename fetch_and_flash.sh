@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 url=$1
 
 if [ -z "$url" ]; then
@@ -30,4 +30,5 @@ time curl \
   $url \
   | gunzip \
   | sudo dd bs=10M of=$BUGG \
-  && tada
+  && $TADA \
+  && echo "Flashing successful"
