@@ -12,7 +12,7 @@ RAN_FLAG="/opt/.first-boot.sh-ran"
 echo "Ran at `date`" >> $RAN_FLAG
 
 # By the time this script runs, the root filesystem has been expanded to fill the SD card,
-# the system had rebooted once, and the first-boot.service has run, installing the Bugg soundcard driver.
+# the system has rebooted once, and the first-boot.service has run, installing the Bugg soundcard driver.
 # Now we enable the testing service, disable the first-boot service, and reboot the system so the soundcard driver can load.
 logger -t first-boot.sh "⚙️ Enabling the bugg-test service"
 systemctl enable buggd.service
