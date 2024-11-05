@@ -55,7 +55,7 @@ jobs:
         -   name: Checkout Bugg Soundcard Driver
             uses: actions/checkout@v4
             with:
-                repository: jeffmakes/bugg-soundcard-driver
+                repository: bugg-resources/bugg-soundcard-driver
                 path: stage-buggOS/files/bugg-soundcard-driver
 
 

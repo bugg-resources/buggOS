@@ -19,7 +19,7 @@ echo "🔧 Installing bugg-recording Python application package into venv"
 on_chroot << EOF
 source /opt/venv/bin/activate
 pip3 install --upgrade pip setuptools wheel
-pip3 install git+https://github.com/jeffmakes/buggd.git
+pip3 install git+https://github.com/bugg-resources/buggd.git
 EOF
 
 echo "🍻 Success installing buggd package!"
