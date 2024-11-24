@@ -124,7 +124,7 @@ jobs:
 
 
         -   name: Download Bugg OS image
-            uses: actions/download-artifact@v2
+            uses: actions/download-artifact@v4
             with:
                 name: buggOS_artifact
 
