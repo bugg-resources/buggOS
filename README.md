@@ -36,5 +36,5 @@ A Linux machine is required for this process.
 cd mass-storage-gadget64
 ../rpiboot -d .
 ```
-6) Now the CM4 should be accessible as a block device like ``/dev/sda``. Check with ``lsblk``.
+6) Now the CM4 should be accessible as a block device like ``/dev/sda``. Check with ``lsblk``. Note that it may take a few seconds for the block device to appear.
 7) Given an image named, e.g., ``Adze_1.0.9-2-gc675b7b-lite.img``, flash the device with ``sudo dd bs=10M of=/dev/sda if=Adze_1.0.9-2-gc675b7b-lite.img``. WARNING: make absolutely certain you supply the correct block device or you could damage your system.
