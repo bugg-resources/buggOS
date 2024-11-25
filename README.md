@@ -27,7 +27,7 @@ To add APT packages to the build, add them to the ``00-packages`` file.
 # Deploying to a Bugg device
 A Linux machine is required for this process.
 
-1) Download the release from Github and unzip
+1) Download the release from Github. NOTE: remember to unzip with ``gunzip``
 2) Connect a micro-USB cable to the Bugg's bootloader port. Plug into your computer.
 3) Connect a USB-to-M12 cable to the Bugg's M12 connector. Plug into your computer.
 4) Compile the rpiboot tool from the [usbboot repo](https://github.com/raspberrypi/usbboot)
